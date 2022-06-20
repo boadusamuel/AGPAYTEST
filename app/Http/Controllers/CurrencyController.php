@@ -34,12 +34,15 @@ class CurrencyController extends Controller
 
     public function show(Currency $currency): CurrencyResource
     {
-        return  new CurrencyResource($currency);
+        return new CurrencyResource($currency);
     }
 
     public function store(FileUploadRequest $request, UploadCurrenciesAction $uploadCurrenciesAction): RedirectResponse
     {
-        $uploadCurrenciesAction->handle($request) ? successResponse('file uploaded successfully') : errorResponse();
+        if ($uploadCurrenciesAction->handle($request)) {
+            successResponse('file uploaded successfully');
+        }
         return redirect()->back();
     }
 }
+
