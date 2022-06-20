@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class CurrencyTest extends TestCase
@@ -15,11 +16,11 @@ class CurrencyTest extends TestCase
         $view->assertSee('Upload');
     }
 
-    public function test_currencies_request_with_file(){
-        $file = UploadedFile::fake()->create('currencies', '40', 'csv');
-        $response = $this->post('currencies', ['file' => $file]);
+    public function test_currencies_read_content_with_generator_function()
+    {
+        $readContent = readContents(Storage::readStream('files/currenciesWithValidFields.csv'));
 
-        $response->assertSessionHasNoErrors();
+        $this->assertEquals('iso_code', $readContent->current()[0]);
     }
 
     public function test_currencies_request_no_file(){

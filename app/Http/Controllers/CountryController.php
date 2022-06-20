@@ -40,7 +40,9 @@ class CountryController extends Controller
 
     public function store(FileUploadRequest $request, UploadCountriesAction $uploadCountriesAction): RedirectResponse
     {
-        $uploadCountriesAction->handle($request) ? successResponse('file uploaded successfully') : errorResponse();
+        if ($uploadCountriesAction->handle($request)) {
+            successResponse('file uploaded successfully');
+        }
         return redirect()->back();
     }
 }
