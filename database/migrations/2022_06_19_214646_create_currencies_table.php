@@ -16,7 +16,7 @@ class CreateCurrenciesTable extends Migration
         Schema::create('currencies', function (Blueprint $table) {
             $table->id();
             $table->string('iso_code');
-            $table->unsignedMediumInteger('iso_numeric_code')->nullable();
+            $table->string('iso_numeric_code')->nullable();
             $table->string('common_name')->nullable();
             $table->string('official_name');
             $table->string('symbol')->nullable();

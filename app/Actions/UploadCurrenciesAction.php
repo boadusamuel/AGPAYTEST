@@ -26,7 +26,6 @@ class UploadCurrenciesAction
                         'official_name' => $records[3],
                         'symbol' => $records[4],
                     ]);
-                    logger($index);
                 }
                 DB::commit();
                 fclose($file);

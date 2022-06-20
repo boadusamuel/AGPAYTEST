@@ -19,9 +19,9 @@ class CreateCountriesTable extends Migration
             $table->string('currency_code')->nullable();
             $table->string('iso2_code')->nullable();
             $table->string('iso3_code')->nullable();
-            $table->unsignedMediumInteger('iso_numeric_code')->nullable();
+            $table->string('iso_numeric_code')->nullable();
             $table->string('fips_code')->nullable();
-            $table->unsignedMediumInteger('calling_code')->nullable();
+            $table->string('calling_code')->nullable();
             $table->string('common_name');
             $table->string('official_name')->nullable();
             $table->string('endonym')->nullable();
